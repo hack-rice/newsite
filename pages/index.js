@@ -3,7 +3,7 @@ import Link from "next/link";
 import Head from "../components/head";
 import Nav from "../components/nav";
 
-import { FaEdit, FaCalendarAlt, FaSun } from "react-icons/fa";
+import { FaEdit, FaCalendarAlt, FaSun, FaClock, FaQuestionCircle, FaHandHoldingUsd } from "react-icons/fa";
 
 const bullets = [
   {
@@ -22,23 +22,143 @@ const bullets = [
     icon: <FaSun />,
     button: "held @ rice memorial center",
     href: "",
-    note: "on our majestic campus in houston, texas"
+    note: "on our majestic campus in houston"
   }
 ].map(bullet => {
   bullet.key = `bullet-${bullet.button}`;
   return bullet;
 });
 
+const cards = [
+  {
+    icon: <FaClock />,
+    title: "View Events Schedule",
+    href: "",
+    text: "Find out when hacking begins and ends, and more →"
+  },
+  {
+    icon: <FaQuestionCircle />,
+    title: "Frequently Asked Questions",
+    href: "",
+    text: "First time? Most of your inquiries are answered →"
+  },
+  {
+    icon: <FaHandHoldingUsd />,
+    title: "Sponsor Our Hackers",
+    href: "",
+    text: "Want to recruit and mentor our hackers? View our tiers →"
+  }
+].map(card => {
+  card.key = `card-${card.title}`;
+  return card;
+});
+
+const friday = [
+  {
+    time: "4:30 PM",
+    title: "Early Registration",
+    detail: "Registration begins for Rice students.",
+  },
+  {
+    time: "5:00 – 6:30 PM",
+    title: "Hacker Registration",
+    detail: "Come to the Grand Hall to check into the event.",
+  },
+  {
+    time: "5:00 – 7:00 PM",
+    title: "Sponsor Setup",
+    detail: "Sponsors will register & set up their tables.",
+  },
+  {
+    time: "7:00 PM",
+    title: "Opening Ceremonies",
+    detail: "Description goes here.",
+  },
+  {
+    time: "7:30 PM",
+    title: "Dinner & Form Teams",
+    detail: "Description goes here.",
+  },
+  {
+    time: "8:00 PM",
+    title: "Hacking Begins!",
+    detail: "Description goes here.",
+  },
+  {
+    time: "11:00 PM",
+    title: "Late Night...",
+    detail: "Description goes here.",
+  }
+].map(item => {
+  item.key = `item-${item.title}`;
+  return item;
+});
+
+const saturday = [
+  {
+    time: "9:00 AM",
+    title: "Breakfast",
+    detail: "Description goes here.",
+  },
+  {
+    time: "12:00 PM",
+    title: "Lunch",
+    detail: "Description goes here.",
+  },
+  {
+    time: "8:00 PM",
+    title: "Dinner",
+    detail: "Description goes here.",
+  },
+].map(item => {
+  item.key = `item-${item.title}`;
+  return item;
+});
+
+const sunday = [
+  {
+    time: "8:30 AM",
+    title: "Judges Arrive",
+    detail: "Description goes here.",
+  },
+  {
+    time: "9:00 AM",
+    title: "Hacking Ends!",
+    detail: "Description goes here.",
+  },
+  {
+    time: "9:30 AM",
+    title: "Judging Begins",
+    detail: "Description goes here.",
+  },
+  {
+    time: "11:00 AM",
+    title: "Brunch",
+    detail: "Description goes here.",
+  },
+  {
+    time: "1:00 PM",
+    title: "Closing Ceremony",
+    detail: "Description goes here.",
+  },
+  {
+    time: "2:00 PM",
+    title: "Finale!",
+    detail: "Description goes here.",
+  },
+].map(item => {
+  item.key = `item-${item.title}`;
+  return item;
+});
+
 const Home = () => (
   <div>
-    <img className="mlh" width="70" src="../static/mlh.svg" />
+    <img className="mlh" width="90" src="../static/mlh.svg" />
     <Head title="HackRice 8" />
     <Nav />
     <div className="container">
       <div className="hero">
-        <h1 className="title">
-          the premier hackathon of the south
-        </h1>
+        <h1 className="title">the premier hackathon of the south</h1>
         <p className="description">
           {bullets.map(({ key, href, button, note, icon }) => (
             <>
@@ -51,35 +171,67 @@ const Home = () => (
               <br />
             </>
           ))}
-          <br />
         </p>
-
-        {/* <div className="row">
-          <Link href="https://github.com/zeit/next.js#getting-started">
-            <a className="card">
-              <h3>Getting Started &rarr;</h3>
-              <p>Learn more about Next on Github and in their examples</p>
-            </a>
-          </Link>
-          <Link href="https://open.segment.com/create-next-app">
-            <a className="card">
-              <h3>Examples &rarr;</h3>
-              <p>
-                Find other example boilerplates on the{' '}
-                <code>create-next-app</code> site
-              </p>
-            </a>
-          </Link>
-          <Link href="https://github.com/segmentio/create-next-app">
-            <a className="card">
-              <h3>Create Next App &rarr;</h3>
-              <p>Was this tool helpful? Let us know how we can improve it</p>
-            </a>
-          </Link>
-        </div> */}
+        <div className="row short" style={{ "margin-top": "30px" }}>
+          {cards.map(({ key, href, title, text, icon }) => (
+            <>
+              <Link href={href}>
+                <a className="card">
+                  <h3>
+                    <span className="icon">{icon}</span>
+                    <span className="spacer" />
+                    {title}
+                  </h3>
+                  <p>{text}</p>
+                </a>
+              </Link>
+            </>
+          ))}
+        </div>
+        <div className="row full white" style={{ "marginTop": "30px" }}>
+          <div className="row">
+            <h1>Schedule</h1>
+          </div>
+          <div className="row">
+            <div className="col-3">
+              <h2>Friday</h2>
+              <ul className="schedule-day">
+                {friday.map(({ key, title, time, detail }) => (
+                  <li className="schedule-item">
+                    <span className="item-time">{time}</span>
+                    <span className="item-title">{title}</span>
+                    <span className="item-detail">{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="col-3">
+              <h2>Saturday</h2>
+              <ul className="schedule-day">
+                {saturday.map(({ key, title, time, detail }) => (
+                  <li className="schedule-item">
+                    <span className="item-time">{time}</span>
+                    <span className="item-title">{title}</span>
+                    <span className="item-detail">{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="col-3">
+              <h2>Sunday</h2>
+              <ul className="schedule-day">
+                {sunday.map(({ key, title, time, detail }) => (
+                  <li className="schedule-item">
+                    <span className="item-time">{time}</span>
+                    <span className="item-title">{title}</span>
+                    <span className="item-detail">{detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <img className="owl" width="200" src="../static/owl.svg" />
-      <img className="sally" width="50%" src="../static/sallyport.svg" />
     </div>
 
     <style jsx>{`
@@ -92,6 +244,20 @@ const Home = () => (
       h5,
       h6 {
         font-family: "Overpass Mono" !important;
+      }
+
+      h3 {
+        line-height: 1.3em;
+      }
+
+      p {
+        font-family: "Inter UI";
+        line-height: 1.5em;
+        font-size: 1.2em;
+      }
+
+      a:hover {
+        color: unset;
       }
 
       a.styledlink {
@@ -119,7 +285,7 @@ const Home = () => (
       }
 
       .sally {
-        position: absolute;
+        position: fixed;
         bottom: 0;
         left: 10%;
       }
@@ -134,6 +300,7 @@ const Home = () => (
         font-family: "Open Sans";
         margin-left: 2%;
         margin-right: 2%;
+        overflow: visible;
       }
 
       .note {
@@ -185,24 +352,63 @@ const Home = () => (
       }
 
       .row {
-        max-width: 880px;
-        margin: 80px auto 40px;
+        width: auto;
+        margin: 0px;
         display: flex;
-        flex-direction: row;
+        flex-flow: row wrap;
         justify-content: space-between;
+      }
+
+      .row.short {
+        max-width: 800px;
+      }
+
+      .col-3 {
+        width: 33%;
+      }
+
+      .row.full {
+        max-width: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        padding: 0% 7%;
+      }
+
+      .white {
+        background: #fff;
+        color: #fff;
+      }
+
+      .white > * {
+        color: #6164B2;
+      }
+
+      .white h1 {
+        border: 1px solid #6164B2;
+        padding: 6px 10px;
+        margin-top: 1em;
+        font-size: 1.6em;
+      }
+
+      .white h2 {
+        font-family: 'Inter UI';
+        text-transform: uppercase;
       }
 
       .card {
         padding: 18px 18px 24px;
-        width: 220px;
+        width: 200px;
         text-align: left;
         text-decoration: none;
         color: #fff;
-        border: 1px solid #fff;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: border-color 0.3s ease-in-out, background 0.3s ease-in-out;
       }
 
       .card:hover {
-        border-color: #067df7;
+        border-color: #e0e5ff;
+        background: rgba(255, 255, 255, 0.05);
       }
 
       .card h3 {
@@ -215,6 +421,62 @@ const Home = () => (
         padding: 12px 0 0;
         font-size: 13px;
       }
+
+      .row > .row {
+        width: 100%;
+      }
+
+      .schedule-day {
+        display: inline-block;
+        vertical-align: top;
+        width: 48%;
+        float: left;
+        margin: 0px;
+      }
+
+      .schedule-day {
+        list-style-type: none;
+        padding: 0;
+        width: 90%;
+      }
+
+      .schedule-item {
+        border-left: 1px solid #6164B2;
+        padding-left: 15px;
+      }
+
+      .schedule-day ul li {
+        display: flex;
+        justify-content: space-between;
+        flex-flow: row wrap;
+        align-content: center;
+      }
+
+      .item-time {
+        display: block;
+        margin-top: 2px;
+        font-family: 'Overpass Mono';
+      }
+
+      .item-title {
+        margin-top: 5px;
+        display: inline-block;
+        font-size: 1.1em;
+        font-weight: 400;
+        font-family: 'Overpass Mono';
+        background: rgba(97, 100, 178, 0.2);
+        padding: 2px 5px;
+      }
+
+      .item-detail {
+        display: block;
+        opacity: 0.7;
+        margin-top: 0.5em;
+        font-size: 1em;
+        clear: both;
+        margin-bottom: 2em;
+      }
+
     `}</style>
   </div>
 );
