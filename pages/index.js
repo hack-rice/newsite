@@ -31,21 +31,21 @@ const bullets = [
 
 const cards = [
   {
-    icon: <FaClock />,
-    title: "View Events Schedule",
+    icon: <FaClock size="0.9em" />,
+    title: "Schedule",
     href: "",
     text: "Find out when hacking begins and ends, and more →"
   },
   {
-    icon: <FaQuestionCircle />,
-    title: "Frequently Asked Questions",
+    icon: <FaQuestionCircle size="0.9em" />,
+    title: "FAQs",
     href: "",
-    text: "First time? Most of your inquiries are answered →"
+    text: "First timer? Most of your inquiries are answered →"
   },
   {
-    icon: <FaHandHoldingUsd />,
-    title: "Sponsor Our Hackers",
-    href: "",
+    icon: <FaHandHoldingUsd size="0.9em" />,
+    title: "Sponsors",
+    href: "../static/sponsors.pdf",
     text: "Want to recruit and mentor our hackers? View our tiers →"
   }
 ].map(card => {
@@ -172,7 +172,7 @@ const Home = () => (
             </>
           ))}
         </p>
-        <div className="row short" style={{ "margin-top": "30px" }}>
+        <div className="row short" style={{ "margin": "50px 0px" }}>
           {cards.map(({ key, href, title, text, icon }) => (
             <>
               <Link href={href}>
@@ -180,7 +180,7 @@ const Home = () => (
                   <h3>
                     <span className="icon">{icon}</span>
                     <span className="spacer" />
-                    {title}
+                    <span className="card-title">{title}</span>
                   </h3>
                   <p>{text}</p>
                 </a>
@@ -360,7 +360,7 @@ const Home = () => (
       }
 
       .row.short {
-        max-width: 800px;
+        max-width: 750px;
       }
 
       .col-3 {
@@ -398,12 +398,16 @@ const Home = () => (
 
       .card {
         padding: 18px 18px 24px;
-        width: 200px;
+        width: 190px;
         text-align: left;
         text-decoration: none;
         color: #fff;
         border: 1px solid rgba(255, 255, 255, 0.3);
         transition: border-color 0.3s ease-in-out, background 0.3s ease-in-out;
+      }
+
+      .card-title {
+        text-transform: uppercase;
       }
 
       .card:hover {
@@ -441,8 +445,20 @@ const Home = () => (
       }
 
       .schedule-item {
-        border-left: 1px solid #6164B2;
-        padding-left: 15px;
+        border: 1px solid rgba(97, 100, 178, 0.2);
+        border-left: 6px solid rgba(97, 100, 178, 0.2);
+        padding: 8px 10px;
+        transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+        margin-bottom: 1em;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .schedule-item:hover {
+        box-shadow: 1px 2px 10px 2px rgba(97, 100, 178, 0.15);
+        transform: translateY(-5px);
       }
 
       .schedule-day ul li {
@@ -453,6 +469,8 @@ const Home = () => (
       }
 
       .item-time {
+        flex: 1 1 auto;
+        float: right;
         display: block;
         margin-top: 2px;
         font-family: 'Overpass Mono';
@@ -461,10 +479,10 @@ const Home = () => (
       .item-title {
         margin-top: 5px;
         display: inline-block;
-        font-size: 1.1em;
+        font-size: 1em;
         font-weight: 400;
         font-family: 'Overpass Mono';
-        background: rgba(97, 100, 178, 0.2);
+        background: rgba(97, 100, 178, 0.1);
         padding: 2px 5px;
       }
 
@@ -472,9 +490,8 @@ const Home = () => (
         display: block;
         opacity: 0.7;
         margin-top: 0.5em;
-        font-size: 1em;
+        font-size: 0.9em;
         clear: both;
-        margin-bottom: 2em;
       }
 
     `}</style>
