@@ -33,6 +33,7 @@ const Head = props => (
     <meta property="og:image:height" content="630" />
     {/* Fonts */}
     <link href="https://fonts.googleapis.com/css?family=Overpass+Mono:300,400,600,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   </NextHead>
 )
 
