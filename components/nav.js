@@ -4,11 +4,11 @@ import { FaFacebook, FaMedium, FaTwitter, FaAt, FaCodepen } from 'react-icons/fa
 
 
 const links = [
-  { href: 'https://facebook.com/hackrice', label: 'Facebook', icon: <FaFacebook size='1.5em' /> },
-  { href: 'https://medium.com/@hackrice', label: 'Medium', icon: <FaMedium size='1.5em' />  },
-  { href: 'https://twitter.com/hackingrice', label: 'Twitter', icon: <FaTwitter size='1.5em' /> },
-  { href: 'mailto:officialhackrice@gmail.com', label: `Email`, icon: <FaAt size='1.5em' /> },
-  { href: 'https://hackrice8.devpost.com/', label: 'Devpost', icon: <FaCodepen size='1.5em' /> },
+  { href: 'https://facebook.com/hackrice', label: 'Facebook', icon: <FaFacebook size='1.8em' /> },
+  { href: 'https://medium.com/@hackrice', label: 'Medium', icon: <FaMedium size='1.8em' />  },
+  { href: 'https://twitter.com/hackingrice', label: 'Twitter', icon: <FaTwitter size='1.8em' /> },
+  { href: 'mailto:officialhackrice@gmail.com', label: `Email`, icon: <FaAt size='1.8em' /> },
+  { href: 'https://hackrice8.devpost.com/', label: 'Devpost', icon: <FaCodepen size='1.8em' /> },
 ].map(link => {
   link.key = `nav-link-${link.href}-${link.label}`
   return link
